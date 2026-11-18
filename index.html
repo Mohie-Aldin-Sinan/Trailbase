@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <meta
+      name="description"
+      content="A simple, free workspace for running treks, bookings, teams, and expenses."
+    />
+    <title>Trailbase — Trek management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" aria-label="Trailbase home" data-view-link="dashboard">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none">
+              <path d="M5 26.5 14.6 9l5.2 9.1 3.1-5.3L31 26.5H5Z" fill="currentColor" />
+              <path d="m11.2 26.5 7.4-12.8 7.4 12.8h-14.8Z" fill="#D5E8B1" />
+            </svg>
+          </span>
+          <span class="brand-name">trailbase<span>.</span></span>
+        </a>
+
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-link active" data-view="dashboard">
+            <span class="nav-icon" aria-hidden="true">⌂</span> Overview
+          </button>
+          <button class="nav-link" data-view="treks">
+            <span class="nav-icon" aria-hidden="true">⌁</span> Treks
+            <span class="nav-count" id="trek-count">0</span>
+          </button>
+          <button class="nav-link" data-view="bookings">
+            <span class="nav-icon" aria-hidden="true">▤</span> Bookings
+          </button>
+          <button class="nav-link" data-view="customers">
+            <span class="nav-icon" aria-hidden="true">♙</span> Customers
+          </button>
+          <button class="nav-link" data-view="guides">
+            <span class="nav-icon" aria-hidden="true">♧</span> Guides
+          </button>
+          <button class="nav-link" data-view="expenses">
+            <span class="nav-icon" aria-hidden="true">↗</span> Expenses
+          </button>
+          <div class="nav-divider"></div>
+          <button class="nav-link" data-view="reports">
+            <span class="nav-icon" aria-hidden="true">▥</span> Reports
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <div class="help-spark">✳</div>
+            <strong>Out there is a good place to be.</strong>
+            <p>Keep the details here. Focus on the trail.</p>
+            <a href="README.md" target="_blank" rel="noreferrer">How it works <span>↗</span></a>
+          </div>
+          <div class="profile">
+            <div class="avatar avatar-dark">TB</div>
+            <div class="profile-copy"><strong>Trailbase</strong><span>Your workspace</span></div>
+            <span class="profile-dots">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu icon-button" id="menu-button" aria-label="Toggle navigation">☰</button>
+          <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+          <div class="topbar-actions">
+            <span class="local-badge"><span></span> Saved on this device</span>
+            <button class="icon-button" id="backup-button" aria-label="Download data backup" title="Download data backup">↓</button>
+            <button class="top-avatar" aria-label="Trailbase workspace">T</button>
+          </div>
+        </header>
+
+        <div class="page-wrap">
+          <section class="view active" id="view-dashboard" aria-labelledby="page-title"></section>
+          <section class="view" id="view-treks" aria-labelledby="page-title"></section>
+          <section class="view" id="view-bookings" aria-labelledby="page-title"></section>
+          <section class="view" id="view-customers" aria-labelledby="page-title"></section>
+          <section class="view" id="view-guides" aria-labelledby="page-title"></section>
+          <section class="view" id="view-expenses" aria-labelledby="page-title"></section>
+          <section class="view" id="view-reports" aria-labelledby="page-title"></section>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <dialog class="modal" id="record-modal" aria-labelledby="modal-title">
+      <form id="record-form" method="dialog">
+        <div class="modal-head">
+          <div><div class="eyebrow" id="modal-eyebrow">NEW RECORD</div><h2 id="modal-title">Add record</h2></div>
+          <button class="icon-button close-modal" type="button" aria-label="Close dialog">×</button>
+        </div>
+        <div class="form-fields" id="form-fields"></div>
+        <div class="modal-footer">
+          <button class="button button-quiet close-modal" type="button">Cancel</button>
+          <button class="button button-primary" type="submit">Save record <span>→</span></button>
+        </div>
+      </form>
+    </dialog>
+    <input id="import-file" type="file" accept="application/json,.json" hidden />
+    <script src="app.js"></script>
+  </body>
+</html>
